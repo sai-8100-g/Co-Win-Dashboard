@@ -1,13 +1,5 @@
 import './index.css'
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend} from 'recharts'
 
 const VaccinationCoverage = props => {
   const {data} = props
@@ -19,29 +11,27 @@ const VaccinationCoverage = props => {
     return num.toString()
   }
   return (
-    <ResponsiveContainer width="80%" height="80%">
-      <BarChart data={data}>
-        <XAxis
-          dataKey="vaccine_date"
-          tick={{
-            stroke: 'gray',
-            strokeWidth: 1,
-          }}
-        />
-        <YAxis
-          tickFormatter={dataFormator}
-          tick={{
-            stroke: 'gray',
-            strokeWidth: 0,
-          }}
-        />
-        <CartesianGrid strokeDasharray="3 3" />
+    <BarChart data={data} width={1000} height={300}>
+      <XAxis
+        dataKey="vaccine_date"
+        tick={{
+          stroke: 'gray',
+          strokeWidth: 1,
+        }}
+      />
+      <YAxis
+        tickFormatter={dataFormator}
+        tick={{
+          stroke: 'gray',
+          strokeWidth: 0,
+        }}
+      />
+      <CartesianGrid strokeDasharray="3 3" />
 
-        <Legend />
-        <Bar type="monotone" dataKey="dose_1" fill="#5a8dee" />
-        <Bar type="monotone" dataKey="dose_2" fill="#2cc6c6" />
-      </BarChart>
-    </ResponsiveContainer>
+      <Legend />
+      <Bar type="monotone" dataKey="dose_1" fill="#5a8dee" />
+      <Bar type="monotone" dataKey="dose_2" fill="#2cc6c6" />
+    </BarChart>
   )
 }
 
